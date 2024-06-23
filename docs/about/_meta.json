@@ -1,0 +1,17 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "项目README"
+  },
+  {
+    "type": "file",
+    "name": "community",
+    "label": "社区公约"
+  },
+  {
+    "type": "file",
+    "name": "about",
+    "label": "关于本项目"
+  }
+]

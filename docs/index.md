@@ -2,19 +2,19 @@
 pageType: home
 
 hero:
-  name: Rspress
-  text: Rspack-based Static Site Generator
-  tagline: Rspress tagline
+  name: CourseCommunity
+  text: Peking University Undergraduate Courses Notes Repository
+  # tagline: Rspress tagline
   actions:
     - theme: brand
-      text: Quick Start
-      link: /guide/
+      text: View Notes
+      link: /Notes/
     - theme: alt
       text: Github
-      link: https://github.com/web-infra-dev/rspress
+      link: https://github.com/StephenQSstarThomas/Lecture-Notes
   image:
-    src: /rspress-icon.png
-    alt: Rspress Logo
+    src: /logo_final.png
+    alt: Site Logo
 features:
   - title: Blazing fast build speed
     details: The core compilation module is based on the Rust front-end toolchain, providing a more ultimate development experience.
