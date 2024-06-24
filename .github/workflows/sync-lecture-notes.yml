@@ -23,7 +23,9 @@ jobs:
       - name: Sync Markdown Files
         run: |
           mkdir -p docs/Notes
-          rsync -av --include='*/' --include='*.md' --exclude='*' Lecture-Notes/ docs/Notes/
+          mkdir -p docs/about
+          rsync -av --include='*/' --include='*.md' --exclude='README.md' --exclude='*' Lecture-Notes/ docs/Notes/
+          cp Lecture-Notes/README.md docs/about/index.mdx
 
       - name: Commit and Push Changes
         run: |
