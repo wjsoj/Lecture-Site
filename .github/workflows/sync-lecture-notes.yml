@@ -23,14 +23,12 @@ jobs:
       - name: Sync Markdown Files
         run: |
           mkdir -p docs/Notes
-          mkdir -p docs/about
-          rsync -av --include='*/' --include='*.md' --exclude='README.md' --exclude='*' Lecture-Notes/ docs/Notes/
-          cp Lecture-Notes/README.md docs/about/index.mdx
+          rsync -av --include='*/' --exclude='README.md' --exclude='.assets/*' --include='*.md'  --exclude='*' Lecture-Notes/ docs/Notes/
 
       - name: Commit and Push Changes
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
-          git add docs/Notes docs/about
+          git add docs/Notes
           git diff --quiet && git diff --staged --quiet || git commit -m "Sync Lecture Notes"
           git push
