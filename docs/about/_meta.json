@@ -18,5 +18,10 @@
     "type": "file",
     "name": "Markdown & MDX",
     "label": "Markdown & MDX"
+  },
+  {
+    "type": "file",
+    "name": "website",
+    "label": "网站工作流"
   }
 ]
