@@ -1,0 +1,34 @@
+name: Sync Lecture Notes
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天午夜运行一次
+  push:
+    branches:
+      - main  # 当 main 分支有 push 时运行
+
+jobs:
+  sync-notes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Lecture Site repository
+        uses: actions/checkout@v2
+
+      - name: Checkout Lecture Notes repository
+        uses: actions/checkout@v2
+        with:
+          repository: StephenQSstarThomas/Lecture-Notes
+          path: Lecture-Notes
+
+      - name: Sync Markdown Files
+        run: |
+          mkdir -p docs/Notes
+          rsync -av --include='*.md' --exclude='*' Lecture-Notes/ docs/Notes/
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add docs/Notes
+          git diff --quiet && git diff --staged --quiet || git commit -m "Sync Lecture Notes"
+          git push
