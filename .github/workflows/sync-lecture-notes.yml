@@ -2,7 +2,7 @@ name: Sync Lecture Notes
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # 每天午夜运行一次
+    - cron: '34 12 * * 2'  # 每周二12：34运行一次（错峰）
   push:
     branches:
       - main  # 当 main 分支有 push 时运行
@@ -23,7 +23,7 @@ jobs:
       - name: Sync Markdown Files
         run: |
           mkdir -p docs/Notes
-          rsync -av --include='*.md' --exclude='*' Lecture-Notes/ docs/Notes/
+          rsync -av --include='*/' --include='*.md' --exclude='*' Lecture-Notes/ docs/Notes/
 
       - name: Commit and Push Changes
         run: |
