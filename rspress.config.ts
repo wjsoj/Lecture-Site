@@ -16,5 +16,5 @@ export default defineConfig({
     ],
   },
   globalStyles: path.join(__dirname, '/src/styles/index.css'),
-  globalUIComponents: [path.join(__dirname, '/src/components/PdfObject.tsx')],
+  // globalUIComponents: [path.join(__dirname, '/src/components/PdfObject.tsx')],
 });
