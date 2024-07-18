@@ -1,10 +1,23 @@
-import { useDark } from 'rspress/runtime';
-import { useEffect } from 'react';
+import { useDark,NoSSR } from 'rspress/runtime';
+import { useEffect,useState } from 'react';
+import { Mail,MessageCircle } from 'lucide-react';
 
 function Card({ children,className='' }) {
   return (
-    <div className={`tw-rounded-2xl tw-transition-all tw-duration-500 tw-px-2 tw-py-4 md:tw-px-10 md:tw-py-6 tw-bg-slate-50 dark:tw-bg-slate-800 tw-shadow-md ${className}`}>
+    <div className={`tw-rounded-2xl tw-transition-all tw-duration-500 tw-px-2 tw-py-4 md:tw-px-10 md:tw-py-6 tw-bg-slate-50 dark:tw-bg-slate-800 tw-shadow-lg ${className}`}>
       {children}
+    </div>
+  )
+}
+
+function ToolTip({ children }) {
+  return (
+    <div className="tw-relative tw-group tw-cursor-pointer tw-hidden md:tw-block">
+      {children}
+      <div className="tw-hidden group-hover:tw-flex tw-absolute tw-top-12 tw-z-10 md:-tw-left-48 tw-overflow-visible tw-flex-col tw-justify-center tw-items-center md:tw-flex-row tw-w-48 md:tw-w-96 tw-p-4 tw-space-x-2 tw-rounded-2xl tw-bg-slate-200 dark:tw-bg-slate-700">
+        <img src="wechat1.png" alt="wechat1" width="168px" height="130px" />
+        <img src="wechat2.png" alt="wechat2" width="168px" height="130px" />
+      </div>
     </div>
   )
 }
@@ -15,8 +28,10 @@ export default function BentoCard() {
   useEffect(() => {
     console.log('isDark:', isDark)
   })
+  const [show, setShow] = useState(false);
 
-  return (    
+  return (
+    <NoSSR>  
     <div className={`tw-flex tw-flex-col tw-items-center tw-space-y-2 md:tw-space-y-20 ${isDark}`}>
       {/* 大分割线 */}
       <div className="tw-w-[80vw] tw-h-[1px] tw-bg-slate-200 dark:tw-bg-black tw-transition-all tw-duration-500 tw-my-6"></div>
@@ -42,8 +57,13 @@ export default function BentoCard() {
             animation: 'textgradient 10s ease infinite',
           }}>深色模式 <br /> 全面支持</h1>
         </div>
-        <Card>            
-          <h1>Card 4</h1>
+        <Card className='wave'>            
+          {/* 山峰渐变色背景 */}
+          {/* svg */}
+          <h1 className=' tw-font-bold tw-text-3xl tw-mt-5 text-center tw-leading-10'><span className='tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-br tw-from-indigo-800 tw-to-pink-600 dark:tw-from-indigo-400 dark:tw-to-pink-400'>用户贡献</span><br />资源整合</h1>
+          <div className="w1 tw-bg-yellow-400 dark:tw-bg-cyan-700 tw-opacity-55"></div>
+          <div className="w2 tw-bg-pink-400 dark:tw-bg-pink-600 tw-opacity-30"></div>
+          <div className="w3 tw-bg-red-500 dark:tw-bg-violet-700 tw-opacity-35"></div>
         </Card>
         <Card className="tw-flex tw-flex-col tw-items-center tw-relative">
           <svg aria-hidden="true" viewBox="0 0 16 16" version="1.1" data-view-component="true" fill="currentColor" className=" tw-bg-white dark:tw-bg-black tw-rounded-full tw-w-12 md:tw-w-20">
@@ -72,17 +92,48 @@ export default function BentoCard() {
             <p className="tw-text-sm md:tw-text-base tw-text-wrap">只需编写Markdown文件，即可生成为网页。此外还允许在Markdown文件中使用Web组件，创造出色的交互效果</p>
           </div>
         </Card>
-        <Card>
-          <h1>Card 9</h1>
+        <Card className='flex tw-flex-col tw-items-center tw-relative'>
+          <h1 className='tw-text-xl md:tw-text-2xl tw-font-semibold tw-mb-2'>联系我们  </h1>
+          <div className="tw-w-32 tw-h-0.5 tw-bg-sky-800 dark:tw-bg-sky-200 tw-mb-2"></div> 
+          <div className="tw-flex tw-flex-row tw-items-center tw-space-x-2 tw-mt-2">
+            <Mail size={24} />
+            <a href="mailto:coursecommunity@163.com" className="md:tw-text-lg tw-font-semibold hover:tw-underline hover:tw-text-sky-800 dark:hover:tw-text-sky-200 tw-underline-offset-2 tw-cursor-pointer">
+              邮件
+            </a>
+          </div>
+          <ToolTip>
+            <div className="tw-flex tw-flex-row tw-items-center tw-space-x-2 tw-mt-2">
+              <MessageCircle size={24} />
+              <a href="mailto:coursecommunity@163.com" className="md:tw-text-lg tw-font-semibold hover:tw-underline hover:tw-text-sky-800 dark:hover:tw-text-sky-200 tw-underline-offset-2 tw-cursor-pointer ">
+                微信 
+              </a>
+            </div>
+          </ToolTip>
+          <div className="tw-flex tw-flex-row tw-items-center tw-space-x-2 tw-mt-2 md:tw-hidden" onClick={() => setShow(!show)}>
+            <MessageCircle size={24} />
+            <a href="mailto:coursecommunity@163.com" className="md:tw-text-lg tw-font-semibold hover:tw-underline hover:tw-text-sky-800 dark:hover:tw-text-sky-200 tw-underline-offset-2 tw-cursor-pointer">
+              微信  
+            </a>
+          </div>
         </Card>
-        <div className="tw-flex tw-flex-col tw-items-center tw-p-2 tw-mt-4 md:tw-mt-0 md:tw-px-10 md:tw-py-6 tw-bg-white dark:tw-bg-[#23272f] tw-transition-all tw-duration-500 tw-rounded-2xl">
-          <h1 className="tw-text-2xl md:tw-text-2xl tw-font-semibold tw-mb-2 tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tr tw-from-indigo-600 tw-to-slate-800 dark:tw-from-indigo-400 dark:tw-to-slate-200">了解更多</h1>
+        <div className="tw-flex tw-flex-col tw-items-center tw-p-2 tw-mt-2 md:tw-mt-0 md:tw-px-10 md:tw-py-6 tw-bg-white dark:tw-bg-[#23272f] tw-transition-all tw-duration-500 tw-rounded-2xl">
+          <h1 className="tw-text-xl md:tw-text-2xl tw-font-semibold tw-mb-2 tw-text-transparent tw-bg-clip-text tw-bg-gradient-to-tr tw-from-indigo-600 tw-to-slate-800 dark:tw-from-indigo-400 dark:tw-to-slate-200">了解更多</h1>
           {/* 分割线，  */}
-          <div className="tw-w-32 tw-h-1 tw-bg-sky-800 dark:tw-bg-sky-200 tw-mb-6"></div>
+          <div className="tw-w-32 tw-h-0.5 tw-bg-sky-800 dark:tw-bg-sky-200 tw-mb-6"></div>
           <a href="/about/community.html" className="tw-text-lg md:tw-text-xl tw-transition-all tw-duration-200 tw-font-semibold hover:tw-underline hover:tw-text-sky-800 tw-underline-offset-2 dark:hover:tw-text-sky-200 tw-cursor-pointer">关于本项目</a>
           <a href="/about/about.html" className="tw-text-lg md:tw-text-xl tw-font-semibold hover:tw-underline tw-underline-offset-2 tw-transition-all tw-duration-200 hover:tw-text-sky-800 dark:hover:tw-text-sky-200 tw-cursor-pointer">社区公约</a>
         </div>
       </div>
+
+      {
+        show && (
+          <div className="tw-flex tw-flex-row tw-justify-center tw-items-center">
+            <img src="wechat1.png" alt="wechat1" width="48%" />
+            <img src="wechat2.png" alt="wechat2" width="48%" />
+          </div>
+        )
+      }
     </div>
+    </NoSSR>
   )
 }

@@ -33,3 +33,45 @@ body {
     color: #000;
   }
 }
+
+.wave {
+  position: relative;
+  overflow: hidden;
+  div {
+    position     : absolute;
+    left         : 0px;
+    @media screen and (max-width: 768px) {
+      top          : 110px;
+      width        : 800px;
+      height       : 800px;
+      margin-left  : -320px;
+    }
+    @media screen and (min-width: 768px) {
+      top          : 140px;
+      width        : 800px;
+      height       : 800px;
+      margin-left  : -280px;
+    }
+    border-radius: 40%;
+    overflow: hidden;
+  }
+  .w1 {
+    animation : drift 4s infinite linear;
+  }
+  .w2 {
+    animation : drift 6s infinite linear;
+  }
+  .w3 {
+    animation : drift 8s infinite linear;
+  }
+}
+@keyframes drift {
+  from {
+      -webkit-transform: rotate(0deg);
+      transform        : rotate(0deg);
+  }
+  from {
+      -webkit-transform: rotate(360deg);
+      transform        : rotate(360deg);
+  }
+}
