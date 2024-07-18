@@ -1,4 +1,5 @@
 import { useDark } from 'rspress/runtime';
+import { useEffect } from 'react';
 
 function Card({ children,className='' }) {
   return (
@@ -11,6 +12,9 @@ function Card({ children,className='' }) {
 export default function BentoCard() {
 
   const isDark = useDark() ? 'tw-dark' : '';
+  useEffect(() => {
+    console.log('isDark:', isDark)
+  })
 
   return (    
     <div className={`tw-flex tw-flex-col tw-items-center tw-space-y-2 md:tw-space-y-20 ${isDark}`}>
