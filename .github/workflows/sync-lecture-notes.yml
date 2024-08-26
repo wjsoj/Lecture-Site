@@ -3,9 +3,9 @@ name: Sync Lecture Notes
 on:
   schedule:
     - cron: '34 12 * * 2'  # 每周二12：34运行一次（错峰）
-  push:
-    branches:
-      - main  # 当 main 分支有 push 时运行
+  # push:
+  #   branches:
+  #     - main  # 当 main 分支有 push 时运行
 
 jobs:
   sync-notes:
