@@ -1,9 +1,15 @@
 import GitalkComponent from "gitalk/dist/gitalk-component";
 import "../styles/gitalk.css";
 import { usePageData,NoSSR } from 'rspress/runtime';
+import { useEffect,useState } from 'react';
 
 export default function GitalkCard() {
   const pageData = usePageData();
+  const [key, setKey] = useState(0);
+  useEffect(() => {
+    // use key to force re-render
+    setKey(key + 1);
+  }, [pageData.page.pagePath]);
   return (
     <NoSSR>
       {
@@ -18,6 +24,7 @@ export default function GitalkCard() {
             admin: ["StephenQSstarThomas","wjsoj"],
             title: "评论: "+pageData.page.pagePath,
           }}
+          key={key}
         /> 
       }
     </NoSSR>
