@@ -9,9 +9,9 @@ export default function Gitalk() {
         clientID: "Ov23liBtIq74Cltq7uJQ",
         clientSecret: 'e767cb1c64a63d6cc4f812bde6394836f02cee9c',
         id: pageData.page.pagePath,
-        repo: "CourseCommunity",
-        owner: "StephenQSstarThomas",
-        admin: ["StephenQSstarThomas","wjsoj"],
+        repo: "Lecture-Site",
+        owner: "wjsoj",
+        admin: ["wjsoj"],
         title: pageData.page.title,
       }}
     />
