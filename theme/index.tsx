@@ -1,6 +1,6 @@
 import Theme from 'rspress/theme';
 import BentoCard from '../src/components/BentoCard';
-import Gitalk from '../src/components/GitalkCard';
+import GitalkCard from '../src/components/GitalkCard';
 
 const Layout = () => (
   <Theme.Layout 
@@ -8,7 +8,7 @@ const Layout = () => (
       <BentoCard />
     }
     beforeDocFooter={
-      <Gitalk />
+      <GitalkCard />
     }
   />
 );

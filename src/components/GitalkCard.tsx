@@ -1,7 +1,9 @@
+import 'gitalk/dist/gitalk.css'
+import Gitalk from 'gitalk'
 import GitalkComponent from "gitalk/dist/gitalk-component";
 import { usePageData,NoSSR } from 'rspress/runtime';
 
-export default function Gitalk() {
+export default function GitalkCard() {
   const pageData = usePageData();
   return (
     <NoSSR>
