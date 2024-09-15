@@ -6,6 +6,7 @@ on:
   # push:
   #   branches:
   #     - main  # 当 main 分支有 push 时运行
+  workflow_dispatch:  # 手动触发
 
 jobs:
   sync-notes:
